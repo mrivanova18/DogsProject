@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using DogsApp.Infrastructure.Data.Entities;
+
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DogApp.Data
@@ -9,5 +11,6 @@ namespace DogApp.Data
             : base(options)
         {
         }
+        public DbSet<Dog> Dogs { get; set; }
     }
 }
