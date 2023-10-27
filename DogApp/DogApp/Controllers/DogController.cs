@@ -1,4 +1,7 @@
 ﻿using DogApp.Data;
+using DogApp.Models.Dog;
+
+using DogsApp.Infrastructure.Data.Entities;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -34,16 +37,29 @@ namespace DogApp.Controllers
         // POST: DogController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(DogCreateViewModel bindingModel)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                Dog dogFromDb = new Dog
+                {
+                    Name = bindingModel.Name,
+                    Age = bindingModel.Age,
+                    Breed = bindingModel.Breed,
+                    Picture = bindingModel.Pictures,
+                };
+
+                _context.Dogs.Add(dogFromDb);
+                _context.SaveChanges();
+
+                return this.RedirectToAction("Success");
             }
-            catch
-            {
-                return View();
-            }
+            return this.View();
+        }
+
+        public IActionResult Success()
+        {
+            return this.View();
         }
 
         // GET: DogController/Edit/5

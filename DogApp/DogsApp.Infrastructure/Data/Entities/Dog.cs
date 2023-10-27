@@ -24,6 +24,6 @@ namespace DogsApp.Infrastructure.Data.Entities
         [MaxLength(50)]
         public string Breed { get; set; }
 
-        public string? Pictures { get; set; }
+        public string? Picture { get; set; }
     }
 }
