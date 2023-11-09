@@ -46,7 +46,7 @@ namespace DogApp.Controllers
                     Name = bindingModel.Name,
                     Age = bindingModel.Age,
                     Breed = bindingModel.Breed,
-                    Picture = bindingModel.Pictures,
+                    Picture = bindingModel.Picture,
                 };
 
                 _context.Dogs.Add(dogFromDb);
