@@ -10,6 +10,7 @@ namespace DogApp.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            Database.EnsureCreated();
         }
         public DbSet<Dog> Dogs { get; set; }
     }

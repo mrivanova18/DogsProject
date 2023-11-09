@@ -19,7 +19,16 @@ namespace DogApp.Controllers
         // GET: DogController
         public ActionResult Index()
         {
-            return View();
+            List<DogAllViewModel> dogs = _context.Dogs
+                .Select(dogFromDb => new DogAllViewModel
+                {
+                    Id = dogFromDb.Id,
+                    Name = dogFromDb.Name,
+                    Age = dogFromDb.Age,
+                    Breed = dogFromDb.Breed,
+                    Picture = dogFromDb.Picture
+                }).ToList();
+            return View(dogs);
         }
 
         // GET: DogController/Details/5
