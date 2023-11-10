@@ -34,7 +34,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem =>item.Name)
+                    @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Age)
@@ -46,12 +46,15 @@
                     <img src="@Html.DisplayFor(modelItem => item.Picture)" alt="Image" width="100" />
                     @*@Html.DisplayFor(modelItem => item.Picture)*@
                 </td>
+
                 <td>
                     <a asp-action="Edit" asp-controller="Dog" asp-route-id="@item.Id">Edit</a>
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
+
             </tr>
         }
     </tbody>
 </table>
+
